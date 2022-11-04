@@ -15,7 +15,7 @@ def read_points(file):
 
 if __name__ == '__main__':
     results = glob.glob("**/*.out*", recursive=True)
-    filename = re.compile("(.*)(\.out)_[12]+")
+    filename = re.compile("(.*)(\.out)_[1]+")
     tasks = map(lambda f: filename.search(f).group(1), filter(filename.match, results))
     points = map(lambda f: (read_points(f + ".out_1") + read_points(f + ".out_2")) / (2 if os.path.isfile(f + ".out_2")
                                                                                           else 1), tasks)
